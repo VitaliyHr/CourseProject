@@ -2,26 +2,50 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .wrapperPizza{
     width: 25%;
     text-align: center;
+    margin-top: 30px;
+    margin-left: 3px;
+}
+.photo{
+    border-radius: 10px;
+}
+.price{
+    font-size: 20px;
+    color: red;
+}
+.order{
+    display: inline-block; 
+    text-align: center;
+    cursor: pointer;
+    font-family: "Comfortaa";
+    border: 1px solid #c80000;
+    padding: 16px 41px 14px;
+    font-size: 15px;
+    line-height: 16px;
+    color: #fefefe;
+    background: #c80000;
+    border-radius: 22px;
+    padding: 6px 16px 6px;
+}
+.symbol{
+    color: tomato;
 }
 .countInput{
     font-size: 16px;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     text-align: center;
-    line-height: 38px;
     font-weight: 500;
-    padding: 0 6px;
     font-family: "Roboto";
     border: 1px solid #eaeaea;
     border-radius: 0;
     background: none;
-    margin: 0;
     outline: none;
+    margin: 0 10px;
     color: inherit;
     font: inherit;
 }
@@ -29,5 +53,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    align-items: center;
+    padding-left: 25px;
+    border-top: 1px solid grey;
+    padding-top: 15px;
+}
+.count{
+    display: flex;
     align-items: center;
 }

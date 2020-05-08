@@ -16,7 +16,11 @@ const Vlad = React.memo(({ pizzas, ...props }) => {
                 <div className={style.name}>{pizza.name}</div>
                 <div className={style.buy}>
                     <div className={style.price}>{pizza.price} грн</div>
-                    <span className={style.count}>&minus;{createField('', `${pizza.id}`,'text', Input, [], style.countInput, null, (e) => props.onChange(e))}&#43;</span>
+                    <span className={style.count}>
+                        <span className={style.symbol}>&minus;</span>
+                        {createField('', `${pizza.id}`,'text', Input, [], style.countInput, null, (e) => props.onChange(e))}
+                        <span className={style.symbol}>&#43;</span>
+                        </span>
                     <button key={pizza.id}  className={style.order}>Замовити</button>
                 </div>
                 </div>
