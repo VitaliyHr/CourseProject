@@ -1,0 +1,16 @@
+.wrapper{
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    border: 2px dashed black;
+}
+.item1{
+    padding: 20px;
+    text-decoration: none;
+    color: black;
+}
+.item2{
+    padding: 20px;
+    text-decoration: none;
+    color: black;
+}
