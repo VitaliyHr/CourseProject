@@ -107,3 +107,4 @@ package-lock.json
 
 .eslintignore
 .eslintrc.js
+config/default.json

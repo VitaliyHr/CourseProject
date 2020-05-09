@@ -1,9 +1,13 @@
 import { validationResult } from 'express-validator';
+import log4js from './log4js';
 
-export default function CheckValidation(req, res, next) {
-  const error = validationResult(req);
+const logger = log4js.getLogger('error');
+
+export default async function CheckValidation(req, res, next) {
+  const error = await validationResult(req);
   if (!error.isEmpty()) {
-    return next(new SyntaxError(error.array()));
+    logger.error(error.array());
+    return next();
   }
   return next();
 }
