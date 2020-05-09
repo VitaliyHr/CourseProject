@@ -3,10 +3,11 @@ import { getPizzas } from '../../redux/Seloctors/pizzaCatalogSeloctors'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { VladForm } from './Vlad'
+import { Redirect, withRouter } from 'react-router-dom'
 
 const Vlad = React.memo((props)=>{
     let [count,setCount] = useState(0)
-    let onSubmit = (form)=>{
+    let onSubmit = async (form)=>{
         debugger
     }
     let onChange = (e)=>{

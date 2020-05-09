@@ -32,6 +32,10 @@
     border-radius: 22px;
     padding: 6px 16px 6px;
 }
+.order a{
+    text-decoration: none;
+    color: white;
+}
 .symbol{
     color: tomato;
     cursor: pointer;

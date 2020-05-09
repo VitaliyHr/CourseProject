@@ -4,6 +4,7 @@ import { reduxForm, Field } from 'redux-form'
 import { createField } from '../Common/Field/Field'
 import { Input } from '../Common/FormInput/Input'
 import { require } from '../../Validators/Validate'
+import { NavLink } from 'react-router-dom'
 
 
 const Vlad = React.memo(({count,setCount, pizzas, ...props }) => {
@@ -19,15 +20,13 @@ const Vlad = React.memo(({count,setCount, pizzas, ...props }) => {
                     <span className={style.count}>
                         <span className={style.symbol} onClick={()=>setCount(count-1)}>&minus;</span>
                         {createField('', `count${pizza.name}`,'text', Input, [], style.countInput, count, (e) => props.onChange(e))}
-                        <span className={style.symbol} onClick={()=>{
-                            console.log(count)
-                            setCount(count+1)}}>&#43;</span>
+                        <span className={style.symbol} onClick={()=>{setCount(count+1)}}>&#43;</span>
                         </span>
                     <button key={pizza.id}  className={style.order} onClick={handleSubmit(values => 
                             props.onSubmit({ 
                             ...values,
                             id:pizza.id
-                        }))}>Замовити</button>
+                        }))}><NavLink to={`/buy/${pizza.id}`} >Замовити</NavLink></button>
                 </div>
                 </div>
             </form>)}           
