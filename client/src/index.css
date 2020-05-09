@@ -6,8 +6,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   max-width: 1200px;
+  
 }
-
+html{
+  background: url("image.jpg") no-repeat;
+  background-size: 100%;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
