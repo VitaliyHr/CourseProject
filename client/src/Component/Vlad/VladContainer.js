@@ -1,32 +1,30 @@
-import React, { useState } from 'react'
-import { getPizzas } from '../../redux/Seloctors/pizzaCatalogSeloctors'
+import React from 'react'
+import { getPizzas, getCurrentPage, getPizzaSize } from '../../redux/Seloctors/pizzaCatalogSeloctors'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { VladForm } from './Vlad'
-import { Redirect, withRouter } from 'react-router-dom'
-
-const Vlad = React.memo((props)=>{
-    let [count,setCount] = useState(0)
-    let onSubmit = async (form)=>{
-        debugger
+import { getPizzasThunk, setCurrentPageThunk } from '../../redux/pizza-cattalog'
+class Vlad extends React.Component{
+    componentDidMount(){
+        this.props.getPizzasThunk()
     }
-    let onChange = (e)=>{
-        if(e.target){
-            setCount(e.target.value)
-        }
-        
+    
+    render(){
+        return(
+            <VladForm {...this.props} />
+        )
     }
-    return(
-        <VladForm {...props} onSubmit={onSubmit} onChange={onChange} count={count} setCount={setCount}/>
-    )
-})
+    
+}
 
 const mapStateToProps = (state)=>{
     return {
-        pizzas:getPizzas(state)
+        pizzas:getPizzas(state),
+        currentPage: getCurrentPage(state),
+        size:getPizzaSize(state)
     }
 }
 
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps,{getPizzasThunk,setCurrentPageThunk}),
 )(Vlad)

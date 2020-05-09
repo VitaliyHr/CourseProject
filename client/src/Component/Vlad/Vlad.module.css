@@ -11,8 +11,15 @@
     margin-top: 30px;
     margin-left: 3px;
 }
+.name{
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 0;
+}
 .photo{
     border-radius: 10px;
+    width: 300px;
+    height: 300px;
 }
 .price{
     font-size: 20px;
@@ -58,7 +65,7 @@
 .buy{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     padding-left: 25px;
     border-top: 1px solid grey;
@@ -67,4 +74,8 @@
 .count{
     display: flex;
     align-items: center;
+}
+.wrapperPaginator{
+    width: 100%;
+    text-align: center;
 }
