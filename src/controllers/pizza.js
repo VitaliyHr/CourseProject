@@ -1,6 +1,9 @@
 import { GetPizzas, GetPizzaByID } from '../services/Pizza';
 
-export async function GetPizza(req, res, next) {
+export async function GetPizza(err, req, res, next) {
+  if (err) {
+    return next(err);
+  }
   let pizzas;
   try {
     pizzas = await GetPizzas();
@@ -19,9 +22,12 @@ export async function GetPizza(req, res, next) {
 }
 
 
-export async function GetById(req, res, next) {
+export async function GetById(err, req, res, next) {
+  if (err) {
+    return next(err);
+  }
   let pizza;
-  const { id } = req.body;
+  const { id } = req.params;
   try {
     pizza = await GetPizzaByID(id);
   } catch (err) {
@@ -38,7 +44,10 @@ export async function GetById(req, res, next) {
 }
 
 
-export async function CreateOrder(req, res, next) {
+export async function CreateOrder(err, req, res, next) {
+  if (err) {
+    return next(err);
+  }
   const { id } = req.params;
   const { count, address } = req.body;
   
