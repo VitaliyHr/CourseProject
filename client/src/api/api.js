@@ -6,7 +6,10 @@ const instance = axios.create({
 })
 
 export const Pizza = {
-     getPizza () {
+    getPizza () {
         return instance.get('/pizza')
+    },
+    getPizzaById(id){
+        return instance.get(`/pizza/${id}`)
     }
 }

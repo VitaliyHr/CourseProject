@@ -6,7 +6,6 @@ import { Paginator } from '../Common/Paginator/Paginator'
 
 
 const Vlad = React.memo(({currentPage,size,setCurrentPageThunk, pizzas, ...props }) => {
-    const { handleSubmit } = props;
     const baseUrlForPhoto = 'http://localhost:5000'
     return (
         <div className={style.wrapper}>
@@ -17,11 +16,7 @@ const Vlad = React.memo(({currentPage,size,setCurrentPageThunk, pizzas, ...props
                     <div className={style.name}>{pizza.name}</div>
                     <div className={style.buy}>
                         <div className={style.price}>{pizza.price} грн</div>
-                        <button key={pizza.id} className={style.order} onClick={handleSubmit(values =>
-                            props.onSubmit({
-                                ...values,
-                                id: pizza.id
-                            }))}><NavLink to={`/buy/${pizza.id}`} >Замовити</NavLink></button>
+                        <button key={pizza.id} className={style.order}><NavLink to={`/buy/${pizza._id}`} >Замовити</NavLink></button>
                     </div>
                 </div>
                 }

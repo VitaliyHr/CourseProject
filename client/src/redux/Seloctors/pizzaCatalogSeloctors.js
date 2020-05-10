@@ -7,3 +7,6 @@ export const getCurrentPage = (state)=>{
 export const getPizzaSize = (state)=>{
     return state.pizzaCatalog.size
 }
+export const getPizzaById = (state)=>{
+    return state.pizzaCatalog.pizza
+}

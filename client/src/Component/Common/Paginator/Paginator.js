@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import style from './Paginator.module.css'
 
-export const Paginator = ({totalCount, size, currentPage, setCurrentPageThunk, onPageChange,portionSize=6}) => {
+export const Paginator = ({totalCount, size, currentPage, setCurrentPageThunk,portionSize=6}) => {
     let pagesCount = Math.ceil(totalCount / size);
     let pages = [];
 
