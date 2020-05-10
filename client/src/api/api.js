@@ -11,5 +11,8 @@ export const Pizza = {
     },
     getPizzaById(id){
         return instance.get(`/pizza/${id}`)
+    },
+    orderPizza(email,address,count,id){
+        return instance.post(`/pizza/buy/${id}`,JSON.stringify({email,address,count}))
     }
 }
