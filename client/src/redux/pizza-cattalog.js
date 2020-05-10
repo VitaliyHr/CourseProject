@@ -9,7 +9,7 @@ let intuitionalState = {
     pizzas:[],
     currentPage:1,
     size:9,
-    pizza:{}
+    pizza:null
 }
 
 
@@ -32,6 +32,18 @@ const pizzaCatalogReducer = (state = intuitionalState, action)=>{
 const setPizzas = (pizzas)=>({type:SET_PIZZAS,pizzas})
 const setCurrentPage = (page)=>({type:SET_CURRENT_PAGE,page})
 const setPizzaById = (pizza)=>({type:SET_PIZZA_BY_ID,pizza})
+
+export const buyPizzaThunk = (email,address,count,id)=>{
+    return async (dispatch)=>{
+        let response = await Pizza.orderPizza(email,address,count,id)
+        if(response.data.success){
+            debugger
+        }
+        else{
+            debugger
+        }
+    }
+}
 
 export const getPizzaByIdThunk=(id)=>{
     return async (dispatch)=>{
