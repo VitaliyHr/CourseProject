@@ -1,4 +1,6 @@
 import { GetPizzas, GetPizzaByID } from '../services/Pizza';
+import NewOrder from '../services/order';
+import SendEmail from '../services/email';
 
 export async function GetPizza(req, res, next) {
   let pizzas;
@@ -10,7 +12,7 @@ export async function GetPizza(req, res, next) {
     return next(new Error(error));
   }
   if (!pizzas) {
-    const error = 'Not found';
+    const error = 'Not found pizzas';
     res.status(404).json({ success: false, error });
     return next();
   }
@@ -40,6 +42,40 @@ export async function GetById(req, res, next) {
 
 export async function CreateOrder(req, res, next) {
   const { id } = req.params;
-  const { count, address } = req.body;
-  
+  const { count, address, email } = req.body;
+  let order;
+  let pizza;
+
+  try {
+    pizza = await GetPizzaByID(id);
+  } catch (err) {
+    const error = `Failed to find pizza by id ${id}`;
+    res.status(500).json({ success: false, error });
+    return next(new Error(error));
+  }
+  if (!pizza) {
+    res.status(404).json({ success: false, error: `Not found pizza by id ${id}` });
+    return next();
+  }
+  const price = pizza.price * count;
+
+  try {
+    order = await (await NewOrder(count, id, address, email, price)).populate('pizza').execPopulate();
+  } catch (err) {
+    const error = 'Failed to save order';
+    res.status(500).json({ success: false, error });
+    return next(new Error(error));
+  }
+
+  try {
+    await SendEmail(email, order, pizza.name);
+  } catch (err) {
+    const error = `Failed to send email to user ${email}`;
+    res.status(500).json({ success: false, error });
+    return next(new Error(error));
+  }
+
+  res.status(201).json({ success: true, order });
+
+  return next();
 }

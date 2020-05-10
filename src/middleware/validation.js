@@ -7,4 +7,5 @@ export const ParamsCheck = [
 export const BodyCheck = [
   body('count', 'Count must be a string').isNumeric().isInt(),
   body('address', 'Address must be a string').isString(),
+  body('email', 'Incorrect email').isEmail().trim(),
 ];

@@ -12,5 +12,4 @@ app.get('/:id', ParamsCheck, CheckValidator, GetById, ErrorHandler);
 
 app.post('/buy/:id', BodyCheck, CheckValidator, CreateOrder, ErrorHandler);
 
-
 export default app;

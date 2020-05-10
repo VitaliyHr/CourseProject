@@ -8,12 +8,22 @@ const Order = new Schema({
   },
   pizza: {
     type: Schema.Types.ObjectId,
+    ref: 'Pizza',
     required: true,
   },
   address: {
     type: String,
     required: true,
   },
+  price: {
+    type: Number,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  createdAt: Date,
 });
 
 export default model('orders', Order);
