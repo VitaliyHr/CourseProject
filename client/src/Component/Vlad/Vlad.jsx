@@ -1,36 +1,30 @@
 import React from 'react'
 import style from './Vlad.module.css'
-import { reduxForm, Field } from 'redux-form'
-import { createField } from '../Common/Field/Field'
-import { Input } from '../Common/FormInput/Input'
-import { require } from '../../Validators/Validate'
+import { reduxForm } from 'redux-form'
+import { NavLink } from 'react-router-dom'
+import { Paginator } from '../Common/Paginator/Paginator'
 
 
-const Vlad = React.memo(({count,setCount, pizzas, ...props }) => {
-    const { handleSubmit } = props;
+const Vlad = React.memo(({currentPage,size,setCurrentPageThunk, pizzas, ...props }) => {
+    const baseUrlForPhoto = 'http://localhost:5000'
     return (
         <div className={style.wrapper}>
-            {pizzas.map(pizza => <form key={pizza.id} onSubmit={props.handleSubmit} className={style.wrapperPizza}>
-                <div >
-                <img className={style.photo} src={pizza.photo} alt="NoImg" />
-                <div className={style.name}>{pizza.name}</div>
-                <div className={style.buy}>
-                    <div className={style.price}>{pizza.price} грн</div>
-                    <span className={style.count}>
-                        <span className={style.symbol} onClick={()=>setCount(count-1)}>&minus;</span>
-                        {createField('', `count${pizza.name}`,'text', Input, [], style.countInput, count, (e) => props.onChange(e))}
-                        <span className={style.symbol} onClick={()=>{
-                            console.log(count)
-                            setCount(count+1)}}>&#43;</span>
-                        </span>
-                    <button key={pizza.id}  className={style.order} onClick={handleSubmit(values => 
-                            props.onSubmit({ 
-                            ...values,
-                            id:pizza.id
-                        }))}>Замовити</button>
+            {pizzas.map((pizza,index) =>{
+                if(index<size*currentPage && index>=(size*currentPage)-size){
+                    return <div key={pizza.id} className={style.wrapperPizza}>
+                    <img className={style.photo} src={baseUrlForPhoto+pizza.photo} alt="NoImg" />
+                    <div className={style.name}>{pizza.name}</div>
+                    <div className={style.buy}>
+                        <div className={style.price}>{pizza.price} грн</div>
+                        <button key={pizza.id} className={style.order}><NavLink to={`/buy/${pizza._id}`} >Замовити</NavLink></button>
+                    </div>
                 </div>
-                </div>
-            </form>)}           
+                }
+                else{
+                    return ""
+                }
+            })}
+            <div className={style.wrapperPaginator}><Paginator totalCount={pizzas.length} size={size} currentPage={currentPage} setCurrentPageThunk={setCurrentPageThunk}/></div>
         </div >
     )
 })

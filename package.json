@@ -6,8 +6,8 @@
   "scripts": {
     "build": "babel src -d dist",
     "server": "node dist/app.js",
-    "cli": "node app.js",
-    "client": "npm run cli --prefix client",
+    "start": "node app.js",
+    "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "babel": {
@@ -41,6 +41,7 @@
     "express-validator": "^6.4.1",
     "helmet": "^3.22.0",
     "log4js": "^6.2.1",
-    "mongoose": "^5.9.12"
+    "mongoose": "^5.9.12",
+    "npm": "^6.14.5"
   }
 }

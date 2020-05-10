@@ -7,6 +7,7 @@ import VladContainer from './Component/Vlad/VladContainer';
 import { VitalContainer } from './Component/Vitaliy/Vitaliy'
 import { Provider } from 'react-redux';
 import store from './redux/redux-store';
+import Buy from './Component/Vlad/Buy/BuyContainer';
 
 const AppComponent = React.memo((props) => {
   return (
@@ -15,6 +16,7 @@ const AppComponent = React.memo((props) => {
       <Switch>
         <Route path='/hryhoriv-vlad' render={() => <VladContainer />} />
         <Route path='/hryhoriv-vitaliy' render={() => <VitalContainer />} />
+        <Route path='/buy/:pizzaId?' render={() => <Buy/>} />
         <Route path='*' redact={() => <div>404 NOT FOUND</div>} />
       </Switch>
     </div>
