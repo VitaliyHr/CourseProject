@@ -15,6 +15,9 @@
 .notActive:hover{
     background-color: white;
 }
+.activePage{
+    padding: 30px 0;
+}
 .prev,.next{
     cursor: pointer;
 

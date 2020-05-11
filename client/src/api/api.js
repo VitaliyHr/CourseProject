@@ -1,9 +1,14 @@
 import * as axios from 'axios'
+import qs from 'qs'
 
 const instance = axios.create({
     baseURL:'http://localhost:5000',
     headers:{}
 })
+
+
+
+
 
 export const Pizza = {
     getPizza () {
@@ -13,6 +18,7 @@ export const Pizza = {
         return instance.get(`/pizza/${id}`)
     },
     orderPizza(email,address,count,id){
-        return instance.post(`/pizza/buy/${id}`,JSON.stringify({email,address,count}))
+        const data = qs.stringify({email,address,count})
+        return instance.post(`/pizza/buy/${id}`,data)
     }
 }

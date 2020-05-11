@@ -7,7 +7,7 @@ import { connect } from "react-redux"
 import { BuyForm } from "./Buy"
 import Preloader from "../../Common/Preloader/Preloader"
 
-const BuyContainer = React.memo(({pizza,getPizzaByIdThunk,...props})=>{
+const BuyContainer = React.memo(({pizza,getPizzaByIdThunk,buyPizzaThunk,...props})=>{
     let [count,setCount] = useState(0)
     let onSubmit=(form)=>{
         buyPizzaThunk(form.email,form.address,form.count,props.match.params.pizzaId)

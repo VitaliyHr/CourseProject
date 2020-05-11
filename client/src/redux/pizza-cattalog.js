@@ -9,7 +9,8 @@ let intuitionalState = {
     pizzas:[],
     currentPage:1,
     size:9,
-    pizza:null
+    pizza:null,
+    creatingData:null
 }
 
 
