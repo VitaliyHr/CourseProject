@@ -1,11 +1,11 @@
 import { param, body } from 'express-validator';
 
 export const ParamsCheck = [
-  param('id', 'Incorrect id').isMongoId(),
+  param('id', 'Incorrect url').isMongoId(),
 ];
 
 export const BodyCheck = [
-  body('count', 'Count must be a string').isNumeric().isInt(),
-  body('address', 'Address must be a string').isString(),
+  body('count', 'Incorrect count').isNumeric().isInt(),
+  body('address', 'Incorrect adress').isString(),
   body('email', 'Incorrect email').isEmail().trim(),
 ];

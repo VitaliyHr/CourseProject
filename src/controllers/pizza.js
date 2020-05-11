@@ -1,3 +1,4 @@
+import { validationResult } from 'express-validator';
 import { GetPizzas, GetPizzaByID } from '../services/Pizza';
 import NewOrder from '../services/order';
 import SendEmail from '../services/email';
@@ -22,6 +23,12 @@ export async function GetPizza(req, res, next) {
 
 
 export async function GetById(req, res, next) {
+  const ValidationError = validationResult(req);
+  if (!ValidationError.isEmpty()) {
+    const error = ValidationError.array()[0].msg;
+    res.status(404).json({ success: false, error });
+    return next(new SyntaxError(error));
+  }
   let pizza;
   const { id } = req.params;
   try {
@@ -41,6 +48,12 @@ export async function GetById(req, res, next) {
 
 
 export async function CreateOrder(req, res, next) {
+  const ValidationError = validationResult(req);
+  if (!ValidationError.isEmpty()) {
+    const error = ValidationError.array()[0].msg;
+    res.status(404).json({ success: false, error });
+    return next(new SyntaxError(error));
+  }
   const { id } = req.params;
   const { count, address, email } = req.body;
   let order;

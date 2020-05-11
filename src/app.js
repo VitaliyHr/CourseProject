@@ -1,10 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import config from 'config';
 import compression from 'compression';
 import helmet from 'helmet';
 import log4js from './middleware/log4js';
-import Pizza from './routes/pizza';
+import Router from './routes';
+import config from './config/default';
 
 const logger = log4js.getLogger();
 
@@ -18,23 +18,16 @@ app.use(compression());
 app.use('/image', express.static('image'));
 
 
-app.use('/pizza', Pizza);
-
-app.use((req, res, next) => {
-  if (!res.headersSent) {
-    res.status(404).json({ success: false, error: 'Page not found' });
-  }
-  return next();
-});
+app.use(config.Uri_Mount, Router.CreateRouter());
 
 const start = async () => {
-  await mongoose.connect(config.get('MONGO_URI'), {
+  await mongoose.connect(config.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
   });
 
-  const PORT = config.get('PORT');
+  const { PORT } = config;
   app.listen(PORT, () => {
     logger.info(`Server is running on port ${PORT}`);
   });

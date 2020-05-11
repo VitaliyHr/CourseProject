@@ -2,14 +2,20 @@ import { Router } from 'express';
 import { GetPizza, GetById, CreateOrder } from '../controllers/pizza';
 import ErrorHandler from '../middleware/error.Handler';
 import { BodyCheck, ParamsCheck } from '../middleware/validation';
-import CheckValidator from '../middleware/CheckValidator';
 
-const app = Router();
 
-app.get('/', GetPizza, ErrorHandler);
+function CreateRouter() {
+  const app = Router();
 
-app.get('/:id', ParamsCheck, CheckValidator, GetById, ErrorHandler);
+  app.get('/', GetPizza, ErrorHandler);
 
-app.post('/buy/:id', BodyCheck, CheckValidator, CreateOrder, ErrorHandler);
+  app.get('/:id', ParamsCheck, GetById, ErrorHandler);
 
-export default app;
+  app.post('/buy/:id', BodyCheck, CreateOrder, ErrorHandler);
+
+  return app;
+}
+
+export default {
+  CreateRouter,
+};
