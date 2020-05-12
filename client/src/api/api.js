@@ -1,5 +1,4 @@
 import * as axios from 'axios'
-import qs from 'qs'
 
 const instance = axios.create({
     baseURL:'http://localhost:5000',
@@ -7,18 +6,23 @@ const instance = axios.create({
 })
 
 
-
-
-
 export const Pizza = {
     getPizza () {
-        return instance.get('/pizza')
+        return instance.get('/api/pizza')
     },
     getPizzaById(id){
-        return instance.get(`/pizza/${id}`)
+        return instance.get(`/api/pizza/${id}`)
     },
-    orderPizza(email,address,count,id){
-        const data = qs.stringify({email,address,count})
-        return instance.post(`/pizza/buy/${id}`,data)
+    orderPizza: async(email,address,count,id)=>{
+        // try{
+        //     let response = await instance.post(`/api/pizza/buy/${id}`,JSON.stringify({email,address,count}),{
+        //         'Content-Type':'application/json'
+        //     })
+        //     return(response)
+        // }
+        // catch(error){
+        //     console.log(error)
+        // }
+        return instance.post(`/api/pizza/buy/${id}`,JSON.stringify({email,address,count}))
     }
 }

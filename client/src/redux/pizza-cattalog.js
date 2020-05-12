@@ -3,6 +3,7 @@ import { Pizza } from "../api/api"
 const SET_PIZZAS = 'SET_PIZZAS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_PIZZA_BY_ID = 'SET_PIZZA_BY_ID'
+const SET_ORDER_PIZZA = 'SET_ORDER_PIZZA'
 
 
 let intuitionalState = {
@@ -10,7 +11,8 @@ let intuitionalState = {
     currentPage:1,
     size:9,
     pizza:null,
-    creatingData:null
+    creatingData:null,
+    order:null
 }
 
 
@@ -26,6 +28,9 @@ const pizzaCatalogReducer = (state = intuitionalState, action)=>{
         case SET_PIZZA_BY_ID:{
             return{...state,pizza:action.pizza}
         }
+        case SET_ORDER_PIZZA:{
+            return {...state,order:action.order}
+        }
         default: return state
     }
 }
@@ -33,12 +38,13 @@ const pizzaCatalogReducer = (state = intuitionalState, action)=>{
 const setPizzas = (pizzas)=>({type:SET_PIZZAS,pizzas})
 const setCurrentPage = (page)=>({type:SET_CURRENT_PAGE,page})
 const setPizzaById = (pizza)=>({type:SET_PIZZA_BY_ID,pizza})
+const setOrderedPizza = (order)=>({type:SET_ORDER_PIZZA,order})
 
 export const buyPizzaThunk = (email,address,count,id)=>{
     return async (dispatch)=>{
         let response = await Pizza.orderPizza(email,address,count,id)
         if(response.data.success){
-            debugger
+            dispatch(setOrderedPizza(response.data.order))
         }
         else{
             debugger
