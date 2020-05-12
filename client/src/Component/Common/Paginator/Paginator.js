@@ -5,7 +5,7 @@ export const Paginator = ({totalCount, size, currentPage, setCurrentPageThunk,po
     let pagesCount = Math.ceil(totalCount / size);
     let pages = [];
 
-    let [portionNumber,setPortionNumber] = useState(1);
+    let [portionNumber] = useState(1);
     let leftPortionNumber = (portionNumber-1)*portionSize
     let rightPortionNumber = portionNumber*portionSize
     
