@@ -11,7 +11,6 @@ const BuyContainer = React.memo(({pizza,getPizzaByIdThunk,buyPizzaThunk,error,..
     let [count,setCount] = useState(0)
     let onSubmit=(form)=>{
         buyPizzaThunk(form.email,form.address,form.count,props.match.params.pizzaId)
-        //props.history.push('/order')
     }
     let onChange=(e)=>{
         if(e.target)setCount(e.target.value)
@@ -19,17 +18,23 @@ const BuyContainer = React.memo(({pizza,getPizzaByIdThunk,buyPizzaThunk,error,..
     if(pizza===null){
         getPizzaByIdThunk(props.match.params.pizzaId)
     }
-    return pizza?<BuyForm 
-    pizza={pizza} count={count}
-    setCount = {setCount} onChange={onChange}
-    onSubmit={onSubmit} error={error}/>:<Preloader/>
+    
+    if(props.order === null){
+        return pizza?<BuyForm 
+        pizza={pizza} count={count}
+        setCount = {setCount} onChange={onChange}
+        onSubmit={onSubmit} />:<Preloader/>
+    }
+    else{
+        props.history.push('/order')
+    }
 })
 
 
 const mapStateToProps = (state)=>{
     return{
         pizza:getPizzaById(state),
-        error:state.pizzaCatalog.error
+        order:state.pizzaCatalog.order
     }
 }
 

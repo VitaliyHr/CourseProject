@@ -5,7 +5,6 @@ import s from './Order.module.css'
 import { withRouter } from 'react-router-dom'
 
 const Order = React.memo(({...props})=>{
-        if(!props.order===null){
             let date = new Date(props.order.createdAt);
             let formatter = new Intl.DateTimeFormat("ukr", {
                 weekday: "long",
@@ -28,10 +27,7 @@ const Order = React.memo(({...props})=>{
                     </div>
                     
             </div>)
-        }
-        else{
-            props.history.push('/hryhoriv-vlad')
-        }
+        
 })
 
 

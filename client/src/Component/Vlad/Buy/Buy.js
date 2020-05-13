@@ -34,7 +34,11 @@ class Buy extends React.Component {
                                 <div>{createField('Email', 'email', 'text', Input, [require], style.emailInput, null)}</div>
                             </div>
                             {this.props.error?<div className={style.error}>{this.props.error}</div>:""}
-                            <div className={style.submit}><NavLink to="/order" className={this.props.error===undefined?"":style.link}><button>Заказати</button></NavLink></div>
+                            <div className={style.submit}>
+                                {/* <NavLink to="/order" className={this.props.error===undefined?"":style.link}> */}
+                                    <button>Заказати</button>
+                                    {/* </NavLink> */}
+                            </div>
                         </div>
                     </div>
                 </div>
