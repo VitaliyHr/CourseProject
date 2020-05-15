@@ -1,0 +1,60 @@
+.item{
+    border-bottom: 1px solid #F4F4F4;
+    border-left: 1px solid #E0E0E0;
+    border-radius: 5px;
+    border-right: 1px solid #E0E0E0;
+    border-top: 1px solid #C0C0C0;
+    box-shadow: 0px 1px 1px #C9C9C9 inset;
+    text-align: center;
+    width: 70px;
+}
+.wrapperForm{
+    display: flex;
+}
+.wrapper{
+    display: flex;
+    justify-content: space-around;
+    background: azure;
+    border: none;
+    border-radius: 30px;
+    padding: 20px;
+    margin-top: 20px;
+    align-items: center;
+}
+.button{
+    display: none;
+}
+mfenced[open="("]{
+    border-radius: 10px/40px;
+    border: 2px solid #555555;
+    padding: 2px 0;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    margin: 0em 0.1em;
+}
+.A{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+}
+.wrapperA{
+    border-collapse: separate;
+    border-spacing: 0.2ex 0;
+    white-space: nowrap;
+    margin: 1px;
+    vertical-align: middle;
+    display: flex;
+    width: 150px;
+    flex-wrap: wrap;
+}
+.wrapperB{
+    border-collapse: separate;
+    border-spacing: 0.2ex 0;
+    white-space: nowrap;
+    margin: 1px;
+    vertical-align: middle;
+    display: flex;
+    width: 150px;
+    flex-wrap: wrap;
+}

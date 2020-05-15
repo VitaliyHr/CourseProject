@@ -5,7 +5,6 @@ import { createField } from '../../Common/Field/Field'
 import { Input } from '../../Common/FormInput/Input'
 import { require } from '../../../Validators/Validate'
 import cx from 'classnames'
-import { NavLink } from 'react-router-dom'
 
 class Buy extends React.Component {
     baseUrlForPhoto = 'http://localhost:5000'

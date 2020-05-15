@@ -23,6 +23,5 @@ export const Pizza = {
         catch(error){
             console.log(error)
         }
-        //return instance.post(`/api/pizza/buy/${id}`,JSON.stringify({email,address,count}))
     }
 }
