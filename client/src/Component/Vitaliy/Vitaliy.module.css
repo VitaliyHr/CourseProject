@@ -1,0 +1,23 @@
+
+.wrapperBut{
+    background: cornsilk;
+    border-radius: 30px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+.bT{
+    margin-right: 30px;
+    border-radius: 20px;
+    border: 2px solid gray;
+    text-align: center;
+    padding: 10px;
+    background-color: white;
+}
+.bC{
+    border-radius: 20px;
+    border: 2px solid gray;
+    text-align: center;
+    padding: 10px;
+    background-color: white;
+}

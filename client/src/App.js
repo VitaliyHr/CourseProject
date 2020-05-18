@@ -30,11 +30,11 @@ const AppComponent = React.memo((props) => {
 export const AppContainer = () => {
   return (
     <BrowserRouter>
-      <React.StrictMode>
+      {/* <React.StrictMode> */}
         <Provider store={store}>
           <AppComponent somethingText="TEXT" />
         </Provider>
-      </React.StrictMode>
+      {/* </React.StrictMode> */}
     </BrowserRouter>
   )
 }
