@@ -32,10 +32,12 @@ class Buy extends React.Component {
                                 <div className={ cx(style.email , style.item)}>Ваш email для сформування чека</div>
                                 <div>{createField('Email', 'email', 'text', Input, [require], style.emailInput, null)}</div>
                             </div>
-                            <div className={style.error}></div>
-                            {/* <div className={style.submit}> */}
-                                <button>Заказати</button>
-                                {/* </div> */}
+                            {this.props.error?<div className={style.error}>{this.props.error}</div>:""}
+                            <div className={style.submit}>
+                                {/* <NavLink to="/order" className={this.props.error===undefined?"":style.link}> */}
+                                    <button>Заказати</button>
+                                    {/* </NavLink> */}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -44,4 +46,5 @@ class Buy extends React.Component {
     }
 
 }
+
 export const BuyForm = reduxForm({ form: "buy" })(Buy)

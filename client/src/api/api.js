@@ -2,7 +2,9 @@ import * as axios from 'axios'
 
 const instance = axios.create({
     baseURL:'http://localhost:5000',
-    headers:{}
+    headers:{
+        'Content-Type':'application/json'
+    }
 })
 
 
@@ -14,15 +16,12 @@ export const Pizza = {
         return instance.get(`/api/pizza/${id}`)
     },
     orderPizza: async(email,address,count,id)=>{
-        // try{
-        //     let response = await instance.post(`/api/pizza/buy/${id}`,JSON.stringify({email,address,count}),{
-        //         'Content-Type':'application/json'
-        //     })
-        //     return(response)
-        // }
-        // catch(error){
-        //     console.log(error)
-        // }
-        return instance.post(`/api/pizza/buy/${id}`,JSON.stringify({email,address,count}))
+        try{
+            let response = await instance.post(`/api/pizza/buy/${id}`,JSON.stringify({email,address,count}))
+            return(response)
+        }
+        catch(error){
+            console.log(error)
+        }
     }
 }

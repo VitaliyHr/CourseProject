@@ -1,9 +1,12 @@
 import { Pizza } from "../api/api"
+import { stopSubmit } from "redux-form";
+
 
 const SET_PIZZAS = 'SET_PIZZAS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_PIZZA_BY_ID = 'SET_PIZZA_BY_ID'
 const SET_ORDER_PIZZA = 'SET_ORDER_PIZZA'
+
 
 
 let intuitionalState = {
@@ -40,6 +43,7 @@ const setCurrentPage = (page)=>({type:SET_CURRENT_PAGE,page})
 const setPizzaById = (pizza)=>({type:SET_PIZZA_BY_ID,pizza})
 const setOrderedPizza = (order)=>({type:SET_ORDER_PIZZA,order})
 
+
 export const buyPizzaThunk = (email,address,count,id)=>{
     return async (dispatch)=>{
         let response = await Pizza.orderPizza(email,address,count,id)
@@ -47,7 +51,8 @@ export const buyPizzaThunk = (email,address,count,id)=>{
             dispatch(setOrderedPizza(response.data.order))
         }
         else{
-            debugger
+            let error = response.data.error?response.data.error:"Some Error"
+            dispatch(stopSubmit('buy',{_error:error}))
         }
     }
 }

@@ -1,0 +1,34 @@
+.wrapper{
+    background:rgba(255,255,255,0);
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.wrapperText{
+    width: 50%;
+    text-align: start;
+    background: white;
+    padding: 10px 0;
+}
+.check{
+    font-size: 25px;
+    padding: 30px 30px 15px;
+    border-top: 2px dashed;
+}
+.name{
+    font-size: 20px;
+    padding: 15px 30px
+}
+.price{
+    font-size: 20px;
+    padding: 15px 30px
+}
+.count{
+    font-size: 20px;
+    padding: 15px 30px
+}
+.email{
+    font-size: 20px;
+    padding: 15px 30px;
+    border-bottom: 2px dashed;
+}
