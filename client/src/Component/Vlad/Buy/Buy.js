@@ -5,12 +5,13 @@ import { createField } from '../../Common/Field/Field'
 import { Input } from '../../Common/FormInput/Input'
 import { require } from '../../../Validators/Validate'
 import cx from 'classnames'
+import { Redirect } from 'react-router'
 
-class Buy extends React.Component {
+class Buy extends React.PureComponent {
     baseUrlForPhoto = 'http://localhost:5000'
-
     render() {
         return (
+            this.props.pizza?
             <form onSubmit={this.props.handleSubmit}>
                 <div className={style.wrapper}>
                     <div className={style.photo}><img src={this.baseUrlForPhoto + this.props.pizza.photo} alt="NoImg"></img></div>
@@ -42,6 +43,7 @@ class Buy extends React.Component {
                     </div>
                 </div>
             </form>
+            :<Redirect to="/hryhoriv-vlad"/>
         )
     }
 
