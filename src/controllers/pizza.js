@@ -26,7 +26,11 @@ export async function GetById(req, res, next) {
   const ValidationError = validationResult(req);
   if (!ValidationError.isEmpty()) {
     const error = ValidationError.array()[0].msg;
+<<<<<<< HEAD
     res.status(200).json({ success: false, error });
+=======
+    res.status(422).json({ success: false, error });
+>>>>>>> backend
     return next(new SyntaxError(error));
   }
   let pizza;
@@ -51,7 +55,11 @@ export async function CreateOrder(req, res, next) {
   const ValidationError = validationResult(req);
   if (!ValidationError.isEmpty()) {
     const error = ValidationError.array()[0].msg;
+<<<<<<< HEAD
     res.status(200).json({ success: false, error });
+=======
+    res.status(422).json({ success: false, error });
+>>>>>>> backend
     return next(new SyntaxError(error));
   }
   const { id } = req.params;

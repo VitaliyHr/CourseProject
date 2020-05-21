@@ -1,12 +1,12 @@
 import emailjs from 'emailjs';
-import config from '../config/default';
+import config from '../../config/default';
 
 import log4js from '../middleware/log4js';
 
 const logger = log4js.getLogger('error');
 
-const { user } = config.MailOptions;
-const { password } = config.MailOptions;
+const user = config.USER;
+const password = config.PASS;
 
 const server = emailjs.server.connect({
   user,
