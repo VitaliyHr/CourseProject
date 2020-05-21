@@ -5,6 +5,7 @@ import s from './Calculator.module.css'
 const Calculator = React.memo(({ inputs, inputs2, setCountFieldThunk, result, count, ...props }) => {
     return (
         <div className={s.wrapperVital}>
+            <div className={s.warning}>!!! Заповнюйте 2 поле в тому ж порядку що і перше</div>
             <div className={s.wrapper}>
                 <div className={s.wrapperForm}>
                     <form onSubmit={props.handleSubmit} className={s.A}>
@@ -14,7 +15,7 @@ const Calculator = React.memo(({ inputs, inputs2, setCountFieldThunk, result, co
                         </div>
                     </form>
                     <div className={s.dia}>
-                        <select onChange={(e) => { props.onChange(e) }}>
+                        <select className={s.section} onChange={(e) => { props.onChange(e) }}>
                             <option>+</option>
                             <option>-</option>
                         </select>
@@ -27,16 +28,17 @@ const Calculator = React.memo(({ inputs, inputs2, setCountFieldThunk, result, co
                     </form>
                 </div>
                 <div className={s.wrapperBut}>
-                    <button disabled={count === 4} onClick={() => {
+                    <button disabled={count === 4} className={s.add} onClick={() => {
                         setCountFieldThunk(count + 1)
                     }}>Додати стовпці</button>
-                    <button disabled={count === 2} onClick={() => {
+                    <button disabled={count === 2} className={s.add} onClick={() => {
                         setCountFieldThunk(count - 1)
                     }}>Відняти стовпці</button>
                 </div>
                 <button name='submit' type='submit' className={s.submit} onClick={() => { props.handleSubmit() }}>Вирахувати</button>
             </div>
-            <div className={s.result}>
+            {result.length/count===count?
+                <div className={s.result}>
                 <span>{result.length===0?' ':"Результат - "}</span>
                 <div className={s.wrapperRes} style={{ width: count * 75 + 'px' }}>
                     {result.map(r=>(
@@ -44,6 +46,9 @@ const Calculator = React.memo(({ inputs, inputs2, setCountFieldThunk, result, co
                     ))}
                 </div>
                 </div>
+                :" "
+            }
+            
         </div>
     )
 })
