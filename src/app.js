@@ -5,9 +5,10 @@ import helmet from 'helmet';
 import cors from 'cors';
 import log4js from './middleware/log4js';
 import Router from './routes';
-import config from './config/default';
+import config from '../config/default';
 
 const logger = log4js.getLogger();
+const errLogger = log4js.getLogger('error');
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -18,22 +19,28 @@ app.use(compression());
 app.use(cors());
 
 app.use('/image', express.static('content/image'));
-app.use(`${config.Uri_Mount}/files/pdf`, express.static('content/pdf'));
+app.use(`${config.URI_MOUNT}/files/pdf`, express.static('content/pdf'));
 
 
-app.use(config.Uri_Mount, Router.CreateRouter());
+app.use(config.URI_MOUNT, Router.CreateRouter());
 
-const start = async () => {
-  await mongoose.connect(config.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  });
+async function start() {
+  try {
+    await mongoose.connect(config.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    });
 
-  const { PORT } = config;
-  app.listen(PORT, () => {
-    logger.info(`Server is running on port ${PORT}`);
-  });
-};
+    const { PORT } = config;
+    app.listen(PORT, () => {
+      logger.info(`Server is running on port ${PORT}`);
+    });
+  } catch (err) {
+    const error = 'Failed to connect to database';
+    await errLogger.fatal(error);
+    process.exit(1);
+  }
+}
 
 start();

@@ -7,7 +7,7 @@ log4js.configure({
   },
   categories: {
     default: { appenders: ['out'], level: 'debug' },
-    error: { appenders: ['out', 'file'], level: 'error', enableCallStack: true },
+    error: { appenders: ['out', 'file'], level: 'error' },
   },
 });
 
