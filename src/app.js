@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import compression from 'compression';
 import helmet from 'helmet';
-import cors from 'cors';
+import path from 'path';
 import log4js from './middleware/log4js';
 import Router from './routes';
 import config from '../config/default';
@@ -16,13 +16,22 @@ app.use(express.json({ extended: true }));
 app.use(helmet());
 app.disable('x-powered-by');
 app.use(compression());
-app.use(cors());
 
 app.use('/image', express.static('content/image'));
 app.use(`${config.URI_MOUNT}/files/pdf`, express.static('content/pdf'));
 
 
 app.use(config.URI_MOUNT, Router.CreateRouter());
+
+
+if (process.env.NODE_ENV === 'production') {
+  app.use('/', express.static('client/build'));
+
+  app.get('*', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+    return next();
+  });
+}
 
 async function start() {
   try {

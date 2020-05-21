@@ -7,7 +7,7 @@ const Vital = React.memo((props)=>{
     
     return (
         <div className={s.wrapperBut}>
-            <div><a href="http://matan.kpi.ua/public/files/Posibnyk%20LA+AG.pdf">
+            <div><a href="/api/files/pdf/CoursePDFProject.pdf">
                 <button className={s.bT}>Теорія</button>
                 </a></div>
             <div><NavLink to='/calculator'><button className={s.bC}>Калькулятор</button></NavLink></div>

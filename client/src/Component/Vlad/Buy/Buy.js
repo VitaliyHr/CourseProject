@@ -8,13 +8,12 @@ import cx from 'classnames'
 import { Redirect } from 'react-router'
 
 class Buy extends React.PureComponent {
-    baseUrlForPhoto = 'http://localhost:5000'
     render() {
         return (
             this.props.pizza?
             <form onSubmit={this.props.handleSubmit}>
                 <div className={style.wrapper}>
-                    <div className={style.photo}><img src={this.baseUrlForPhoto + this.props.pizza.photo} alt="NoImg"></img></div>
+                    <div className={style.photo}><img src={this.props.pizza.photo} alt="NoImg"></img></div>
                     <div className={style.wrapperInWrapper}>
                         <div className={style.wrapperForm}>
                             <div className={style.description}>

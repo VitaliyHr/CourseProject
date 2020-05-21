@@ -8,6 +8,7 @@
     "server": "cross-env NODE_ENV=default node dist/app.js",
     "start": "cross-env NODE_ENV=production node app.js",
     "client": "npm run start --prefix client",
+    "client:build": "npm run build --prefix client",
     "dev": "cross-env NODE_ENV=default concurrently \"npm run server\" \"npm run client\""
   },
   "babel": {
@@ -39,7 +40,6 @@
   "dependencies": {
     "compression": "^1.7.4",
     "concurrently": "^5.2.0",
-    "cors": "^2.8.5",
     "cross-env": "^7.0.2",
     "emailjs": "^2.2.0",
     "express": "^4.17.1",
