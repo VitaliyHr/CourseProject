@@ -3,8 +3,10 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import s from './Order.module.css'
 import { withRouter } from 'react-router-dom'
+import { memo } from 'react'
 
-const Order = React.memo(({...props})=>{
+const Order =({...props})=>{
+            if(props.order===null)props.history.push('/hryhoriv-vlad')
             let date = new Date(props.order.createdAt);
             let formatter = new Intl.DateTimeFormat("ukr", {
                 weekday: "long",
@@ -22,13 +24,14 @@ const Order = React.memo(({...props})=>{
                         <div className={s.name}>Назва : {props.order.pizza.name} </div>
                         <div className={s.price}>Загальна вартість : {props.order.price} </div>
                         <div className={s.count}>Кількість : {props.order.count} </div>
+                        <div className={s.count}>Адреса : {props.order.address} </div>
                         <div className={s.email}>Ваш email : {props.order.email} </div>
                         <div className={s.date}>{formatter.format(date)} </div>
                     </div>
                     
             </div>)
         
-})
+}
 
 
 const mapStateToProps = (state) =>{
@@ -40,4 +43,4 @@ const mapStateToProps = (state) =>{
 export default compose(
     withRouter,
     connect(mapStateToProps)
-)(Order)
+)(memo(Order))

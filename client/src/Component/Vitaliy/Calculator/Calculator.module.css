@@ -29,6 +29,40 @@
     background: azure;
     border: none;
     border-radius: 30px;
+    text-align: center;
+    padding: 3% 0;
+    margin-top: 10px;
+}
+.section{
+    cursor: pointer;
+}
+.add{
+    margin:0 2px;
+    border: none;
+    border-radius: 10px;
+    background: lightsteelblue;
+    padding: 8px;
+    cursor: pointer;
+    transition: .5s;
+}
+.add:hover{
+    background-color: #2879FF;
+}
+.submit{
+    background-color: #38C6F2;
+    border: none;
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+}
+.warning{
+    border: 2px solid red;
+    color: black;
+    background-color: yellow;
+    font-size: 18px;
+    width: 50%;
+    border-radius: 30px;
+    margin:10px auto;
 }
 .wrapperRes{
     border-collapse: separate;
