@@ -1,26 +1,29 @@
 import React from 'react'
 import style from './Vlad.module.css'
-import { reduxForm, Field } from 'redux-form'
-import { createField } from '../Common/Field/Field'
-import { Input } from '../Common/FormInput/Input'
-import { require } from '../../Validators/Validate'
+import { reduxForm } from 'redux-form'
+import { NavLink } from 'react-router-dom'
+import { Paginator } from '../Common/Paginator/Paginator'
 
 
-const Vlad = React.memo(({ pizzas, ...props }) => {
-    console.log(pizzas)
+const Vlad = React.memo(({currentPage,size,setCurrentPageThunk, pizzas, ...props }) => {
     return (
         <div className={style.wrapper}>
-            {pizzas.map(pizza => <form key={pizza.id} onSubmit={props.handleSubmit} className={style.wrapperPizza}>
-                <div >
-                <img className={style.photo} src={pizza.photo} alt="NoImg" />
-                <div className={style.name}>{pizza.name}</div>
-                <div className={style.buy}>
-                    <div className={style.price}>{pizza.price} грн</div>
-                    <span className={style.count}>&minus;{createField('', `${pizza.id}`,'text', Input, [], style.countInput, null, (e) => props.onChange(e))}&#43;</span>
-                    <button key={pizza.id}  className={style.order}>Замовити</button>
+            {pizzas.map((pizza,index) =>{
+                if(index<size*currentPage && index>=(size*currentPage)-size){
+                    return <div key={pizza.id} className={style.wrapperPizza}>
+                    <img className={style.photo} src={pizza.photo} alt="NoImg" />
+                    <div className={style.name}>{pizza.name}</div>
+                    <div className={style.buy}>
+                        <div className={style.price}>{pizza.price} грн</div>
+                        <button key={pizza.id} className={style.order}><NavLink to={`/buy/${pizza._id}`} >Замовити</NavLink></button>
+                    </div>
                 </div>
-                </div>
-            </form>)}           
+                }
+                else{
+                    return ""
+                }
+            })}
+            <div className={style.wrapperPaginator}><Paginator totalCount={pizzas.length} size={size} currentPage={currentPage} setCurrentPageThunk={setCurrentPageThunk}/></div>
         </div >
     )
 })
