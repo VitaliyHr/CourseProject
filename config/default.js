@@ -3,7 +3,7 @@ const env = process.env.NODE_ENV;
 
 const standart = {
   MONGO_URI: 'mongodb+srv://VitaliyHr:rZtZ4wS5D8ETAlxC@cluster0-uuhtj.mongodb.net/CourseProject?retryWrites=true&w=majority',
-  PORT: 5000,
+  PORT: 4000,
   USER: 'hryhorivvetal@gmail.com',
   PASS: 'Cqwertyuiop2002',
   URI_MOUNT: '/api',

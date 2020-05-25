@@ -11,8 +11,8 @@ body {
   
 }
 html{
-  background: url("https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/3667915/910/607/m2/fpnw/wm1/nmzbxenrvudgiuql2gecymrkchyewfixbljlnhzfmcee5aog6m0o0146ltenmjts-.jpg?1512111126&s=09e589f33be51c2630b58b91981bff77") no-repeat;
-  background-size: 100% 100%;
+  background: url("./image.jpg") no-repeat;
+  background-size: cover;
   height: 100%;
 }
 code {

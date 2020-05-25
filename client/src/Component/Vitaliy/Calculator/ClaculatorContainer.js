@@ -28,7 +28,7 @@ class CalculatorContainer extends React.Component {
         }
     }
     CreateInput = (name,cx)=>{
-        return createField('',name,"number",Input,[require],cx,0)
+        return createField('',name,"number",Input,[],cx,0)
     }
     onChangeOnRadio=(e)=>{
         if(e.target){            
