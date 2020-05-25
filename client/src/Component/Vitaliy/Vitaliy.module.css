@@ -1,6 +1,6 @@
 
 .wrapperBut{
-    background: cornsilk;
+    background: rgba($color: #ffffff, $alpha: 0.6);
     border-radius: 30px;
     padding: 30px;
     display: flex;
@@ -8,16 +8,22 @@
 }
 .bT{
     margin-right: 30px;
-    border-radius: 20px;
-    border: 2px solid gray;
-    text-align: center;
-    padding: 10px;
-    background-color: white;
 }
-.bC{
+.bC,.bT{
     border-radius: 20px;
-    border: 2px solid gray;
+    border: none;
     text-align: center;
     padding: 10px;
-    background-color: white;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    font-size: 27px;
+    font-family: 'Balsamiq Sans', cursive;
+    transition: .5s;
+}
+.bT:hover{
+    background-color: gray;
+}
+.bC:hover{
+    background-color: gray;
 }

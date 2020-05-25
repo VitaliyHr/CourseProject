@@ -24,3 +24,8 @@ export const Pizza = {
         }
     }
 }
+export const Calculator = {
+    calculate (method,matrix) {
+        return instance.post('/api/calc',JSON.stringify({method,matrix}))
+    }
+}
