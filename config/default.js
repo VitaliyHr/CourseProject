@@ -11,11 +11,11 @@ const standart = {
 
 
 const production = {
-  MONGO_URI: process.env.MONGO_URI,
-  PORT: process.env.PORT,
-  USER: process.env.USER,
-  PASS: process.env.PASS,
-  URI_MOUNT: process.env.URI_MOUNT,
+  MONGO_URI: standart.MONGO_URI,
+  PORT: 80,
+  USER: standart.USER,
+  PASS: standart.PASS,
+  URI_MOUNT: standart.URI_MOUNT,
 };
 
 
