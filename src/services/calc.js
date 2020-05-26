@@ -11,13 +11,12 @@ export function SumMatrix(A,B)
 }
 
 export const RezMatrix = (A, B) => {   
-  let m = A.length;
-  let C = [];
-  for (let i = 0; i < m; i++) {
-    C[i] = [];
-    C[i] = A[i] - B[i];
-  }
-  return C;
+  let m = A.length, n = A[0].length, C = [];
+    for (let i = 0; i < m; i++)
+     { C[ i ] = [];
+       for (let j = 0; j < n; j++) C[ i ][j] = A[ i ][j]-B[ i ][j];
+     }
+    return C;
 };
 
 
