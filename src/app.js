@@ -16,6 +16,7 @@ app.use(express.json({ extended: true }));
 app.use(helmet());
 app.disable('x-powered-by');
 app.use(compression());
+app.use(log4js.connectLogger(logger,{ level: 'info' }))
 
 app.use('/image', express.static('content/image'));
 app.use(`${config.URI_MOUNT}/files/pdf`, express.static('content/pdf'));
@@ -27,12 +28,10 @@ app.use(config.URI_MOUNT, Router.CreateRouter());
 if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, '..', 'client', 'build')));
 
-  app.get('*', (req, res, next) => {
+  app.get('*', (req, res) => {
     if (!res.headersSent) {
       res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
-      return next();
     }
-    return next();
   });
 }
 
