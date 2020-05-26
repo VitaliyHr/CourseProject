@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import { getPizzaById } from "../../../redux/Seloctors/pizzaCatalogSeloctors"
 import { getPizzaByIdThunk , buyPizzaThunk} from "../../../redux/pizza-cattalog"
 import { compose } from "redux"
@@ -7,7 +7,7 @@ import { connect } from "react-redux"
 import { BuyForm } from "./Buy"
 import Preloader from "../../Common/Preloader/Preloader"
 
-const BuyContainer = React.memo(({pizza,getPizzaByIdThunk,buyPizzaThunk,error,...props})=>{
+const BuyContainer = ({pizza,getPizzaByIdThunk,buyPizzaThunk,error,...props})=>{
     let [count,setCount] = useState(0)
     let onSubmit=(form)=>{
         buyPizzaThunk(form.email,form.address,form.count,props.match.params.pizzaId)
@@ -18,8 +18,7 @@ const BuyContainer = React.memo(({pizza,getPizzaByIdThunk,buyPizzaThunk,error,..
     if(pizza===null){
         getPizzaByIdThunk(props.match.params.pizzaId)
     }
-    
-    if(props.order === null){
+    if(props.order === null || props.match.params.pizzaId){
         return pizza?<BuyForm 
         pizza={pizza} count={count}
         setCount = {setCount} onChange={onChange}
@@ -28,7 +27,7 @@ const BuyContainer = React.memo(({pizza,getPizzaByIdThunk,buyPizzaThunk,error,..
     else{
         props.history.push('/order')
     }
-})
+}
 
 
 const mapStateToProps = (state)=>{
@@ -38,7 +37,8 @@ const mapStateToProps = (state)=>{
     }
 }
 
+
 export default compose(
     withRouter,
     connect(mapStateToProps,{getPizzaByIdThunk,buyPizzaThunk})
-)(BuyContainer)
+)(memo(BuyContainer))

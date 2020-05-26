@@ -34,9 +34,7 @@ class Buy extends React.PureComponent {
                             </div>
                             {this.props.error?<div className={style.error}>{this.props.error}</div>:""}
                             <div className={style.submit}>
-                                {/* <NavLink to="/order" className={this.props.error===undefined?"":style.link}> */}
-                                    <button>Заказати</button>
-                                    {/* </NavLink> */}
+                                <button disabled={this.props.error}>Заказати</button>
                             </div>
                         </div>
                     </div>
