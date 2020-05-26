@@ -32,18 +32,23 @@ const setResult = (result)=>({type:SET_RESULT,result})
 
 
 export const setInputThunk = (input)=>{
-    return dispatch=>{
+    return (dispatch)=>{
         dispatch(setInput(input))
     }
 }
 export const setInputThunk2 = (input)=>{
-    return dispatch=>{
+    return (dispatch)=>{
         dispatch(setInput2(input))
     }
 }
-export const setResultThunk = (method,matrix)=>{
+export const setResultThunk = (method,matrix,pow=null,num=null)=>{
     return async dispatch=>{
-        let res = await Calculator.calculate(method,matrix);
+        let res;
+        if (method==="+"||method==="-")res = await Calculator.calculate(method,matrix);
+        else if (method==="*" && pow)res = await Calculator.pow(matrix,pow);
+        else if (method==="*" && num)res = await Calculator.mult(matrix,num);
+        else if (method==="*")res = await Calculator.multMatrix(matrix);
+
         if(res.data.success){
             dispatch(setResult(res.data.result))
         }

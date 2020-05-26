@@ -6,7 +6,6 @@ import { Input } from '../../Common/FormInput/Input'
 import { require } from '../../../Validators/Validate'
 import cx from 'classnames'
 import { Redirect } from 'react-router'
-import { NavLink } from 'react-router-dom'
 
 class Buy extends React.PureComponent {
     render() {

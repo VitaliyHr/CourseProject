@@ -12,6 +12,9 @@ import Order from './Component/Vlad/Order/Order';
 import ClaculatorContainer from './Component/Vitaliy/Calculator/ClaculatorContainer';
 import AddContainer from './Component/Vitaliy/Calculator/Add/AddContainer';
 import RizContainer from './Component/Vitaliy/Calculator/Riz/RizContainer';
+import MultContainer from './Component/Vitaliy/Calculator/Mult/MultContainer';
+import MultMatrixContainer from './Component/Vitaliy/Calculator/MultMatrix/MultMatrixContainer';
+import PowContainer from './Component/Vitaliy/Calculator/Pow/PowContainer';
 
 const AppComponent = React.memo((props) => {
   return (
@@ -25,6 +28,9 @@ const AppComponent = React.memo((props) => {
         <Route path='/calculator' render={() => <ClaculatorContainer/>} />
         <Route path='/add' render={()=> <AddContainer/>}/>
         <Route path='/riz' render={()=> <RizContainer/>}/>
+        <Route path='/mult' render={()=> <MultContainer/>}/>
+        <Route path='/multM' render={()=> <MultMatrixContainer/>}/>
+        <Route path='/pow' render={()=> <PowContainer/>}/>
         <Route path='*' redact={() => <div>404 NOT FOUND</div>} />
       </Switch>
     </div>

@@ -25,7 +25,16 @@ export const Pizza = {
     }
 }
 export const Calculator = {
-    calculate (method,matrix) {
+    addRiz (method,matrix) {
         return instance.post('/api/calc',JSON.stringify({method,matrix}))
+    },
+    mult (matrix,value){
+        return instance.post('/api/calc/mnojtovalue',JSON.stringify({matrix,value}))
+    },
+    pow (matrix,value){
+        return instance.post('api/calc/pow',JSON.stringify({matrix,value}))
+    },
+    multMatrix (matrix){
+        return instance.post('/api/calc/mnoj',JSON.stringify({matrix}))
     }
 }
