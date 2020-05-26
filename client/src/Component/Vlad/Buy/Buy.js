@@ -6,6 +6,7 @@ import { Input } from '../../Common/FormInput/Input'
 import { require } from '../../../Validators/Validate'
 import cx from 'classnames'
 import { Redirect } from 'react-router'
+import { NavLink } from 'react-router-dom'
 
 class Buy extends React.PureComponent {
     render() {
@@ -34,7 +35,7 @@ class Buy extends React.PureComponent {
                             </div>
                             {this.props.error?<div className={style.error}>{this.props.error}</div>:""}
                             <div className={style.submit}>
-                                <button disabled={this.props.error}>Заказати</button>
+                               <button disabled={this.props.error}>Заказати</button>
                             </div>
                         </div>
                     </div>
