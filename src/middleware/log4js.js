@@ -6,8 +6,8 @@ log4js.configure({
     file: { type: 'file', filename: './logs/server.log', encoding: 'utf-8' },
   },
   categories: {
-    default: { appenders: ['out'], level: 'debug' },
-    error: { appenders: ['out', 'file'], level: 'error' },
+    default: { appenders: ['out', 'file'], level: 'debug' },
+    error: { appenders: ['file', 'out'], level: 'error' },
   },
 });
 

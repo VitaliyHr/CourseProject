@@ -24,11 +24,14 @@ app.use(`${config.URI_MOUNT}/files/pdf`, express.static('content/pdf'));
 app.use(config.URI_MOUNT, Router.CreateRouter());
 
 
-if (process.env.NODE_ENV === 'default') {
-  app.use('/', express.static('client/build'));
+if (process.env.NODE_ENV === 'production') {
+  app.use('/', express.static(path.join(__dirname, '..', 'client', 'build')));
 
   app.get('*', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+    if (!res.headersSent) {
+      res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+      return next();
+    }
     return next();
   });
 }
@@ -47,8 +50,10 @@ async function start() {
     });
   } catch (err) {
     const error = 'Failed to connect to database';
-    await errLogger.fatal(error);
-    process.exit(1);
+    errLogger.fatal(error);
+    setTimeout(() => {
+      process.exit(1);
+    }, 1500);
   }
 }
 

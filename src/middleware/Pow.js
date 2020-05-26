@@ -1,0 +1,33 @@
+import { MatrixPow, DoOneArray } from '../services/calc';
+
+export default function PowMatrix(req, res, next) {
+  let array;
+  let result;
+  try {
+    array = DoOneArray(req.body.matrix);
+  } catch (err) {
+    const error = 'Failed to parse array in MnojToValue';
+    res.status(500).json({ success: false, error });
+    return next(new Error(error));
+  }
+  if (!array) {
+    const error = 'Failed to parse array in MnojToValue';
+    res.status(400).json({ success: false, error });
+    return next();
+  }
+  try {
+    result = MatrixPow(req.body.value, array);
+  } catch (err) {
+    const error = 'Failed to mult matrix';
+    res.status(500).json({ success: false, error });
+    return next(new Error(error));
+  }
+  if (!result) {
+    const error = 'Failed to get array in MnojToValue';
+    res.status(400).json({ success: false, error });
+    return next();
+  }
+
+  res.status(200).json({ success: true, result });
+  return next();
+}
