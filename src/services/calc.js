@@ -22,6 +22,9 @@ export const RezMatrix = (A, B) => {
 
 
 export function DoSecondArray(obj = {}) {
+  for(let el in obj) {
+    obj[el] = parseInt(obj[el]);
+  }
   let finst = [];
   let prefirst = {};
   let presecond = {};
@@ -80,6 +83,7 @@ export function DoSecondArray(obj = {}) {
       second[2][r] = presecond[key];
       ++r;
     }
+
     else if (key[1] == '3') {
       second[3][l] = presecond[key];
       ++l;
@@ -93,6 +97,9 @@ export function DoSecondArray(obj = {}) {
 
 
 export function DoOneArray(obj = {}) {
+  for(let el in obj) {
+    obj[el] = parseInt(obj[el]);
+  }
   let finst = [];
   let prefirst = {};
   for (let key in obj) {
