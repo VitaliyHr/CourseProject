@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getInputs, getInputs2, getResult } from '../../../../redux/Seloctors/Calculator';
 import { setInputThunk, setInputThunk2, setResultThunk } from '../../../../redux/vitaliy';
-import s from './Riz.module.css';
+import s from '../Add/Add.module.css';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Riz from './Riz';

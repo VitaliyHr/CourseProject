@@ -20,7 +20,7 @@ const Add = ({ inputs, inputs2, setCount, result, count, ...props }) => {
                 <button name='submit' type='submit' className={s.submit} onClick={() => { props.handleSubmit() }}>Вирахувати</button>
             </div>
             {props.error ? <div className={s.error}>{props.error}</div> : ""}
-            <Result count={count} s={s} result={result}/> 
+            <Result count={count} s={s} result={result} />
         </div>
     );
 };

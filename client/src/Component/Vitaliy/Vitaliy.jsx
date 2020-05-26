@@ -4,7 +4,6 @@ import s from './Vitaliy.module.css'
 
 
 const Vital = React.memo((props)=>{
-    
     return (
         <div className={s.wrapperBut}>
             <div><a href="/api/files/pdf/CoursePDFProject.pdf">

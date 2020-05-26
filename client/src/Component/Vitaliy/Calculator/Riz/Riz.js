@@ -1,5 +1,5 @@
 import React from 'react'
-import s from './Riz.module.css'
+import s from '../Add/Add.module.css'
 import { reduxForm } from 'redux-form';
 import Matrix from '../../../Common/Matrix/Matrix';
 import AddInput from '../../../Common/AddInput/AddInput';
