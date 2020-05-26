@@ -50,9 +50,11 @@ export const setResultThunk = (method,matrix,pow=null,num=null)=>{
         else if (method==="*")res = await Calculator.multMatrix(matrix);
 
         if(res.data.success){
+            debugger
             dispatch(setResult(res.data.result))
         }
         else{
+            debugger
             let error = res.data.error?res.data.error:"Some Error"
             dispatch(stopSubmit('calculator',{_error:error}))
         }
