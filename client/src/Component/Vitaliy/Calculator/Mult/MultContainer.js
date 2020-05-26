@@ -13,7 +13,6 @@ const MultContainer = props => {
         props.setInputThunk(pushInputInState('a', count, s))
     }, [count])
     let onSubmit = ({ number, ...form }) => {
-        debugger
         props.setResultThunk("*", form, null, number)
     }
     return (

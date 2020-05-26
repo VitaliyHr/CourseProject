@@ -25,7 +25,7 @@ app.use(`${config.URI_MOUNT}/files/pdf`, express.static('content/pdf'));
 app.use(config.URI_MOUNT, Router.CreateRouter());
 
 
-if (process.env.NODE_ENV === 'default') {
+if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, '..', 'client', 'build')));
 
   app.get('*', (req, res) => {
