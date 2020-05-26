@@ -7,7 +7,7 @@ export default function SumRezMatrix(req, res, next) {
     arrays = DoSecondArray(req.body.matrix);
   } catch (err) {
     const error = 'Failed to pharse arrays';
-    res.status(500).json({ success: false, error });
+    res.status(200).json({ success: false, error });
     return next(new Error(error));
   }
   if (req.body.method === '+') {
@@ -15,12 +15,12 @@ export default function SumRezMatrix(req, res, next) {
       result = SumMatrix(arrays.finst, arrays.second);
     } catch (err) {
       const error = 'Failed to sum matrix';
-      res.status(500).json({ success: false, error });
+      res.status(200).json({ success: false, error });
       return next(new Error(error));
     }
     if (!result) {
       const error = 'Something went wrong at sum matrix';
-      res.status(400).json({ success: false, error });
+      res.status(200).json({ success: false, error });
       return next();
     }
     res.status(200).json({ success: true, result });
@@ -31,12 +31,12 @@ export default function SumRezMatrix(req, res, next) {
       result = RezMatrix(arrays.finst, arrays.second);
     } catch (err) {
       const error = 'Failed to rez matrix';
-      res.status(500).json({ success: false, error });
+      res.status(200).json({ success: false, error });
       return next(new Error(error));
     }
     if (!result) {
       const error = 'Something went wrong at rez matrix';
-      res.status(400).json({ success: false, error });
+      res.status(200).json({ success: false, error });
       return next();
     }
     res.status(200).json({ success: true, result });

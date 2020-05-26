@@ -7,24 +7,24 @@ export default function MnojToValue(req, res, next) {
     array = DoOneArray(req.body.matrix);
   } catch (err) {
     const error = 'Failed to parse array in MnojToValue';
-    res.status(500).json({ success: false, error });
+    res.status(200).json({ success: false, error });
     return next(new Error(error));
   }
   if (!array) {
     const error = 'Failed to parse array in MnojToValue';
-    res.status(400).json({ success: false, error });
+    res.status(200).json({ success: false, error });
     return next();
   }
   try {
     result = multMatrixNumber(req.body.value, array);
   } catch (err) {
     const error = 'Failed to mult matrix';
-    res.status(500).json({ success: false, error });
+    res.status(200).json({ success: false, error });
     return next(new Error(error));
   }
   if (!result) {
     const error = 'Failed to get array in MnojToValue';
-    res.status(400).json({ success: false, error });
+    res.status(200).json({ success: false, error });
     return next();
   }
 
