@@ -44,7 +44,7 @@ export const setInputThunk2 = (input)=>{
 export const setResultThunk = (method,matrix,pow=null,num=null)=>{
     return async dispatch=>{
         let res;
-        if (method==="+"||method==="-")res = await Calculator.calculate(method,matrix);
+        if (method==="+"||method==="-")res = await Calculator.addRiz(method,matrix);
         else if (method==="*" && pow)res = await Calculator.pow(matrix,pow);
         else if (method==="*" && num)res = await Calculator.mult(matrix,num);
         else if (method==="*")res = await Calculator.multMatrix(matrix);

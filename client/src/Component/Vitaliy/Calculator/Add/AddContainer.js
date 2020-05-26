@@ -15,6 +15,7 @@ const AddContainer = props => {
         props.setInputThunk2(pushInputInState('b', count, s))
     }, [count])
     let onSubmit = (form) => {
+        debugger
         props.setResultThunk("+", form)
     }
     return (
