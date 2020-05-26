@@ -7,7 +7,7 @@ export const pushInputInState = (type,count,s) => {
   if (type === 'a') {
     for (let i = 0; i < count; i++) {
       for (let j = 0; j < count; j++) {
-        arr1.push(createField('', `${type}${i}${j}`, "number", Input, [], s.item,0))
+        arr1.push(createField('', `${type}${i}${j}`, "number", Input, [], s.item))
       }
     }
     return arr1
@@ -15,7 +15,7 @@ export const pushInputInState = (type,count,s) => {
   else {
     for (let i = 0; i < count; i++) {
       for (let j = 0; j < count; j++) {
-        arr2.push(createField('', `${type}${i}${j}`, "number", Input, [], s.item,0))
+        arr2.push(createField('', `${type}${i}${j}`, "number", Input, [], s.item))
       }
     }
     return arr2
