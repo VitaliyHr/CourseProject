@@ -11,6 +11,6 @@ export default function Mnoj (req, res, next) {
   if (req.body.matrix) {
     return MnojMatrix(req, res, next);
   }
-  res.status(400).json({ success: false, error: 'Invalid method' });
+  res.status(200).json({ success: false, error: 'Invalid method' });
   return next();
 }

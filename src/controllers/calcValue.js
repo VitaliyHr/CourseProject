@@ -12,6 +12,6 @@ export default function CalcMnoj(req, res, next) {
   if (req.body.value && req.body.matrix) {
     return MnojToValue(req, res, next);
   }
-  res.status(400).json({ success: false, error: 'Invalid method at mnoj to value' });
+  res.status(200).json({ success: false, error: 'Invalid method at mnoj to value' });
   return next();
 }

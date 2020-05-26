@@ -11,6 +11,6 @@ export default function CalcMatrix(req, res, next) {
   if (req.body.method === '-' || '+') {
     return SumResMatrix(req, res, next);
   }
-  res.status(400).json({ success: false, error: 'Invalid method' });
+  res.status(200).json({ success: false, error: 'Invalid method' });
   return next();
 }
