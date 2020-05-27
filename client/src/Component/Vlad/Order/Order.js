@@ -4,9 +4,10 @@ import { connect } from 'react-redux'
 import s from './Order.module.css'
 import { withRouter } from 'react-router-dom'
 import { memo } from 'react'
+import Preloader from '../../Common/Preloader/Preloader'
 
 const Order =({...props})=>{
-            if(props.order===null)props.history.push('/hryhoriv-vlad')
+            if(props.order===null)return <Preloader/>
             let date = new Date(props.order.createdAt);
             let formatter = new Intl.DateTimeFormat("ukr", {
                 weekday: "long",

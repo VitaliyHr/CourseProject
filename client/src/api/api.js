@@ -1,40 +1,34 @@
 import * as axios from 'axios'
 
 const instance = axios.create({
-    headers:{
-        'Content-Type':'application/json'
+    headers: {
+        'Content-Type': 'application/json'
     }
 })
 
 
 export const Pizza = {
-    getPizza () {
+    getPizza() {
         return instance.get('/api/pizza')
     },
-    getPizzaById(id){
+    getPizzaById(id) {
         return instance.get(`/api/pizza/${id}`)
     },
-    orderPizza: async(email,address,count,id)=>{
-        try{
-            let response = await instance.post(`/api/pizza/buy/${id}`,JSON.stringify({email,address,count}))
-            return(response)
-        }
-        catch(error){
-            console.log(error)
-        }
+    orderPizza(email, address, count, id) {
+        return instance.post(`/api/pizza/buy/${id}`, JSON.stringify({ email, address, count }))
     }
 }
 export const Calculator = {
-    addRiz (method,matrix) {
-        return instance.post('/api/calc',JSON.stringify({method,matrix}))
+    addRiz(method, matrix) {
+        return instance.post('/api/calc', JSON.stringify({ method, matrix }))
     },
-    mult (matrix,value){
-        return instance.post('/api/calc/mnojtovalue',JSON.stringify({matrix,value}))
+    mult(matrix, value) {
+        return instance.post('/api/calc/mnojtovalue', JSON.stringify({ matrix, value }))
     },
-    pow (matrix,value){
-        return instance.post('api/calc/pow',JSON.stringify({matrix,value}))
+    pow(matrix, value) {
+        return instance.post('api/calc/pow', JSON.stringify({ matrix, value }))
     },
-    multMatrix (matrix){
-        return instance.post('/api/calc/mnoj',JSON.stringify({matrix}))
+    multMatrix(matrix) {
+        return instance.post('/api/calc/mnoj', JSON.stringify({ matrix }))
     }
 }

@@ -4,14 +4,13 @@ import { getPizzaByIdThunk, buyPizzaThunk } from "../../../redux/pizza-cattalog"
 import { compose } from "redux"
 import { withRouter } from "react-router-dom"
 import { connect } from "react-redux"
-import { BuyForm } from "./Buy"
-import Preloader from "../../Common/Preloader/Preloader"
+import  BuyForm  from "./Buy"
+import Order from '../Order/Order'
 
 const BuyContainer = ({ pizza, getPizzaByIdThunk, buyPizzaThunk, error, ...props }) => {
     let [count, setCount] = useState(0)
     let onSubmit = async (form) => {
         await buyPizzaThunk(form.email, form.address, form.count, props.match.params.pizzaId)
-        props.history.push('/order')
     }
     let onChange = (e) => {
         if (e.target) setCount(e.target.value)
@@ -19,10 +18,16 @@ const BuyContainer = ({ pizza, getPizzaByIdThunk, buyPizzaThunk, error, ...props
     useEffect(() => {
         getPizzaByIdThunk(props.match.params.pizzaId)
     }, [props.match.params.pizzaId])
-    return pizza ? <BuyForm
+    if(props.order === null){
+        return <BuyForm
         pizza={pizza} count={count}
         setCount={setCount} onChange={onChange}
-        onSubmit={onSubmit} /> : <Preloader />
+        onSubmit={onSubmit} /> 
+    }
+    else {
+        return <Order order={props.order}/>
+    }
+    
 }
 
 
