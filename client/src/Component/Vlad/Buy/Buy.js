@@ -35,7 +35,7 @@ class Buy extends React.PureComponent {
                             </div>
                             {this.props.error?<div className={style.error}>{this.props.error}</div>:""}
                             <div className={style.submit}>
-                               <button disabled={this.props.error}>Заказати</button>
+                               <button disabled={this.props.error}>Замовити</button>
                             </div>
                         </div>
                     </div>
