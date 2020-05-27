@@ -51,6 +51,7 @@ export const buyPizzaThunk = (email,address,count,id)=>{
             dispatch(setOrderedPizza(response.data.order))
         }
         else{
+            debugger
             let error = response.data.error?response.data.error:"Some Error"
             dispatch(stopSubmit('buy',{_error:error}))
         }
@@ -62,8 +63,8 @@ export const getPizzaByIdThunk=(id)=>{
         const response = await Pizza.getPizzaById(id)
         if(response.data.success){
             dispatch(setPizzaById(response.data.pizza))
+            dispatch(setOrderedPizza(null))
         }
-        else{}
     }
 }
 

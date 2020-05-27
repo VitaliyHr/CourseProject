@@ -24,7 +24,6 @@ const AppComponent = React.memo((props) => {
         <Route path='/hryhoriv-vlad' render={() => <VladContainer />} />
         <Route path='/hryhoriv-vitaliy' render={() => <VitalContainer />} />
         <Route path='/buy/:pizzaId?' render={() => <Buy/>} />
-        <Route path='/order' render={() => <Order/>} />
         <Route path='/calculator' render={() => <ClaculatorContainer/>} />
         <Route path='/add' render={()=> <AddContainer/>}/>
         <Route path='/riz' render={()=> <RizContainer/>}/>
